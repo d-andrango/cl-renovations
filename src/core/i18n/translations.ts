@@ -11,10 +11,10 @@ export const en: Translations = {
     contact: 'Contact',
   },
   hero: {
-    tagline: 'Father & Son · London',
+    tagline: 'London',
     title: 'Built with\nPrecision.\nCrafted with\nPassion.',
     subtitle:
-      'Premium renovations across East London. Two generations of expertise at your service.',
+      'Renovations across London. Two generations of expertise at your service.',
     cta: 'Request a Quote',
     yearsLabel: 'Years Combined',
     yearsValue: '60+',
@@ -45,7 +45,7 @@ export const en: Translations = {
   },
   experience: {
     sectionLabel: 'Our Story',
-    title: '60 Years of\nCombined Mastery',
+    title: '+20 Years of\nCombined Mastery',
     subtitle:
       'A family legacy built on trust, precision and an uncompromising dedication to quality. With over three decades in the trade, he has shaped London homes with the kind of craftsmanship that only comes from a lifetime of dedication. Every beam, every fitting, every finish — done right.',
     combinedLabel: 'Years Combined Experience',
@@ -53,7 +53,7 @@ export const en: Translations = {
   },
   serviceArea: {
     sectionLabel: 'Where We Work',
-    title: 'Serving East London\n& Beyond',
+    title: 'Serving London\n& Beyond',
     subtitle: 'Based in Leytonstone, we cover a wide range of London boroughs and surrounding areas.',
     areas: [
       'Leytonstone',
@@ -83,7 +83,7 @@ export const en: Translations = {
     address: 'Leytonstone, London E11',
   },
   footer: {
-    tagline: 'Premium renovations, built on trust.',
+    tagline: 'Properly renovations, built on trust.',
     rights: '© 2026 CL Renovations. All rights reserved.',
   },
   process: {
@@ -177,10 +177,10 @@ export const es: Translations = {
     contact: 'Contacto',
   },
   hero: {
-    tagline: 'Padre e Hijo · Londres',
+    tagline: 'Londres',
     title: 'Construido con\nPrecisión.\nCreado con\nPasión.',
     subtitle:
-      'Reformas premium en el East de Londres. Dos generaciones de experiencia a tu servicio.',
+      'Reformas en Londres. Dos generaciones de experiencia a tu servicio.',
     cta: 'Solicitar Presupuesto',
     yearsLabel: 'Años Combinados',
     yearsValue: '60+',
@@ -219,7 +219,7 @@ export const es: Translations = {
   },
   serviceArea: {
     sectionLabel: 'Dónde Trabajamos',
-    title: 'Sirviendo East London\ny Alrededores',
+    title: 'Sirviendo Londres\ny Alrededores',
     subtitle:
       'Con base en Leytonstone, cubrimos una amplia gama de barrios de Londres y zonas cercanas.',
     areas: [
@@ -247,10 +247,10 @@ export const es: Translations = {
     successMessage: '¡Gracias! Nos pondremos en contacto en menos de 24 horas.',
     phone: '+44 7XXX XXX XXX',
     email: 'info@clrenovations.co.uk',
-    address: 'Leytonstone, Londres E11',
+    address: 'Leytonstone, Londres',
   },
   footer: {
-    tagline: 'Reformas premium, construidas sobre confianza.',
+    tagline: 'Reformas, construidas sobre confianza.',
     rights: '© 2026 CL Renovations. Todos los derechos reservados.',
   },
   process: {
@@ -287,7 +287,7 @@ export const es: Translations = {
   portfolio: {
     sectionLabel: 'Nuestro Trabajo',
     title: 'Proyectos de los\nque Estamos Orgullosos',
-    subtitle: 'Una selección de reformas completadas en el East de Londres.',
+    subtitle: 'Una selección de reformas completadas en Londres.',
     filterAll: 'Todos',
     filterRenovations: 'Reformas',
     filterCarpentry: 'Carpintería',
@@ -297,7 +297,7 @@ export const es: Translations = {
   testimonials: {
     sectionLabel: 'Reseñas de Clientes',
     title: 'Lo Que Dicen\nNuestros Clientes',
-    subtitle: 'La confianza de cientos de propietarios en el East de Londres.',
+    subtitle: 'La confianza de cientos de propietarios en Londres.',
     items: [
       {
         name: 'Sarah M.',

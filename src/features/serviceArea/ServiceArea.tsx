@@ -27,27 +27,40 @@ export function ServiceArea() {
           className={`service-area__content animate-fade-up${contentVisible ? ' is-visible' : ''}`}
           ref={contentRef as React.RefObject<HTMLDivElement>}
         >
-          <div className="service-area__map-placeholder" aria-label="Service area map — East London">
-            <div className="service-area__map-inner">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="service-area__map-icon">
+          <div className="service-area__map-container">
+            <iframe
+              className="service-area__map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158857.72810468847!2d-0.24168!3d51.5287718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761d3c0f0a6a45%3A0x2b89a4e5c5b5c5c5!2sEast%20London%2C%20London%2C%20UK!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Service area map - East London"
+            />
+            <div className="service-area__map-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
-              <p className="service-area__map-label">East London</p>
-              <p className="service-area__map-sublabel">Based in Leytonstone, E11</p>
+              <span>East London</span>
             </div>
           </div>
 
           <div className="service-area__areas">
             <p className="service-area__areas-heading">Coverage Areas</p>
-            <ul className="service-area__list" aria-label="Service coverage areas">
+            <div className="service-area__pills" aria-label="Service coverage areas">
               {t.serviceArea.areas.map((area, i) => (
-                <li key={i} className={`service-area__list-item stagger-${(i % 6) + 1}`}>
-                  <span className="service-area__list-dot" aria-hidden="true" />
-                  {area}
-                </li>
+                <div key={i} className={`service-area__pill stagger-${(i % 6) + 1}`}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span>{area}</span>
+                </div>
               ))}
-            </ul>
+            </div>
             <div className="service-area__note">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="10"/>

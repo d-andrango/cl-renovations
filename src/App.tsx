@@ -6,12 +6,12 @@ import { Services } from './features/services/Services'
 import { Process } from './features/process/Process'
 import { Portfolio } from './features/portfolio/Portfolio'
 import { Experience } from './features/experience/Experience'
-import { Testimonials } from './features/testimonials/Testimonials'
 import { ServiceArea } from './features/serviceArea/ServiceArea'
 import { Contact } from './features/contact/Contact'
 import { Footer } from './components/common/Footer/Footer'
 
 import './components/common/Navbar/Navbar.scss'
+import './components/common/MobileMenu/MobileMenu.scss'
 import './features/hero/Hero.scss'
 import './features/services/Services.scss'
 import './features/process/Process.scss'
@@ -33,7 +33,6 @@ function App() {
           <Process />
           <Portfolio />
           <Experience />
-          <Testimonials />
           <ServiceArea />
           <Contact />
         </main>

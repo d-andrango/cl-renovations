@@ -29,7 +29,13 @@
     gap: $space-xl;
 
     @media (max-width: $bp-md) {
-      padding: 0 $space-lg;
+      padding: 0 $space-md;
+      gap: $space-md;
+    }
+
+    @media (max-width: $bp-sm) {
+      padding: 0 $space-md;
+      gap: $space-md;
     }
   }
 
@@ -42,11 +48,16 @@
     border: none;
     cursor: pointer;
     padding: 0;
+    transition: transform $transition-fast;
+
+    &:active {
+      transform: scale(0.96);
+    }
   }
 
   &__logo-cl {
     font-family: $font-display;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 900;
     color: $color-gold;
 
@@ -55,11 +66,15 @@
     }
     letter-spacing: -0.03em;
     line-height: 1;
+
+    @media (max-width: $bp-lg) {
+      font-size: 1.3rem;
+    }
   }
 
   &__logo-text {
     font-family: $font-body;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -67,6 +82,10 @@
 
     .navbar--scrolled & {
       color: var(--text-primary);
+    }
+
+    @media (max-width: $bp-lg) {
+      font-size: 0.7rem;
     }
   }
 
@@ -77,27 +96,7 @@
     justify-content: center;
 
     @media (max-width: $bp-lg) {
-      position: fixed;
-      inset: 0;
-      top: 72px;
-      background: $color-charcoal-900;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: $space-2xl $space-xl;
-      transform: translateX(100%);
-      transition: transform $transition-normal;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-      .navbar--scrolled & {
-        background: var(--bg-primary);
-        border-top: 1px solid var(--border-color);
-      }
-      pointer-events: none;
-
-      &--open {
-        transform: translateX(0);
-        pointer-events: all;
-      }
+      display: none; // Hidden on mobile - MobileMenu component handles this
     }
   }
 
@@ -105,12 +104,6 @@
     display: flex;
     align-items: center;
     gap: $space-xl;
-
-    @media (max-width: $bp-lg) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: $space-xl;
-    }
   }
 
   &__link {
@@ -124,8 +117,6 @@
     .navbar--scrolled & {
       color: var(--text-secondary);
     }
-    background: none;
-    border: none;
     cursor: pointer;
     padding: $space-xs 0;
     position: relative;
@@ -143,7 +134,7 @@
       .navbar--scrolled & {
         background: var(--gold);
       }
-      transition: width $transition-normal;
+      transition: width $transition-fast;
     }
 
     &:hover {
@@ -157,11 +148,6 @@
         width: 100%;
       }
     }
-
-    @media (max-width: $bp-lg) {
-      font-size: 1.2rem;
-      letter-spacing: 0.05em;
-    }
   }
 
   // ── Actions
@@ -169,6 +155,10 @@
     display: flex;
     align-items: center;
     gap: $space-md;
+
+    @media (max-width: $bp-lg) {
+      gap: $space-sm;
+    }
   }
 
   &__lang {
@@ -197,7 +187,12 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    transition: background $transition-fast, color $transition-fast;
+    transition: background $transition-fast, color $transition-fast, transform $transition-fast;
+
+    @media (max-width: $bp-lg) {
+      padding: 6px 9px;
+      font-size: 0.65rem;
+    }
 
     &--active {
       background: $color-gold;
@@ -214,6 +209,10 @@
       .navbar--scrolled & {
         color: var(--text-primary);
       }
+    }
+
+    &:active {
+      transform: scale(0.95);
     }
   }
 
@@ -232,7 +231,7 @@
       color: var(--text-secondary);
     }
     background: transparent;
-    transition: border-color $transition-fast, color $transition-fast;
+    transition: border-color $transition-fast, color $transition-fast, transform $transition-fast;
 
     &:hover {
       border-color: $color-gold;
@@ -241,6 +240,20 @@
       .navbar--scrolled & {
         border-color: var(--gold);
         color: var(--gold);
+      }
+    }
+
+    &:active {
+      transform: scale(0.92);
+    }
+
+    @media (max-width: $bp-lg) {
+      width: 34px;
+      height: 34px;
+      
+      svg {
+        width: 18px;
+        height: 18px;
       }
     }
   }
@@ -262,10 +275,26 @@
     }
     background: transparent;
     cursor: pointer;
-    transition: border-color $transition-fast;
+    transition: border-color $transition-fast, transform $transition-fast, background $transition-fast;
+
+    &:hover {
+      border-color: $color-gold;
+      background: rgba(201, 169, 110, 0.08);
+
+      .navbar--scrolled & {
+        border-color: var(--gold);
+      }
+    }
+
+    &:active {
+      transform: scale(0.92);
+    }
 
     @media (max-width: $bp-lg) {
       display: flex;
+      width: 34px;
+      height: 34px;
+      gap: 4px;
     }
 
     span {
@@ -278,17 +307,46 @@
         background: var(--text-primary);
       }
       border-radius: 1px;
-      transition: transform $transition-normal, opacity $transition-fast;
+      transition: transform $transition-normal, opacity $transition-fast, background $transition-fast;
+
+      @media (max-width: $bp-lg) {
+        width: 16px;
+      }
+    }
+
+    &:hover span {
+      background: $color-gold;
+
+      .navbar--scrolled & {
+        background: var(--gold);
+      }
+    }
+
+    &--open {
+      border-color: $color-gold;
+      background: rgba(201, 169, 110, 0.12);
+
+      .navbar--scrolled & {
+        border-color: var(--gold);
+      }
+    }
+
+    &--open span {
+      background: $color-gold;
+
+      .navbar--scrolled & {
+        background: var(--gold);
+      }
     }
 
     &--open span:nth-child(1) {
-      transform: translateY(6.5px) rotate(45deg);
+      transform: translateY(5.5px) rotate(45deg);
     }
     &--open span:nth-child(2) {
       opacity: 0;
     }
     &--open span:nth-child(3) {
-      transform: translateY(-6.5px) rotate(-45deg);
+      transform: translateY(-5.5px) rotate(-45deg);
     }
   }
 }

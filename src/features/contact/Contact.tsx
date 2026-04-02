@@ -17,20 +17,86 @@ export function Contact() {
   const [form, setForm] = useState<FormState>({ name: '', email: '', phone: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string>('')
+
+  // Web3Forms Access Key - Get yours free at https://web3forms.com
+  const ACCESS_KEY = 'de686fa7-b97e-4bbf-bd23-b7802e7841bf'
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setForm(prev => ({ ...prev, [name]: value }))
+    setError('')
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError('')
+
+    // Validate required fields
+    if (!form.name.trim()) {
+      setError('Please enter your name')
+      return
+    }
+
+    if (!form.email.trim()) {
+      setError('Please enter your email address')
+      return
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(form.email)) {
+      setError('Please enter a valid email address')
+      return
+    }
+
+    if (!form.message.trim()) {
+      setError('Please enter a message')
+      return
+    }
+
+    // Validate minimum message length
+    if (form.message.trim().length < 10) {
+      setError('Message must be at least 10 characters long')
+      return
+    }
+
     setSubmitting(true)
-    // Simulate async submission
-    setTimeout(() => {
-      setSubmitted(true)
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          message: form.message.trim(),
+          subject: `New Contact from CL Renovations - ${form.name.trim()}`,
+          from_name: 'CL Renovations Website',
+          // Auto-responder configuration
+          replyto: form.email.trim(),
+          autoresponse: true,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitted(true)
+        setForm({ name: '', email: '', phone: '', message: '' })
+      } else {
+        setError('Something went wrong. Please try again or contact us directly.')
+      }
+    } catch (err) {
+      setError('Connection error. Please check your internet and try again.')
+    } finally {
       setSubmitting(false)
-    }, 1000)
+    }
   }
 
   const contactInfo = [
@@ -115,9 +181,26 @@ export function Contact() {
                   <polyline points="22 4 12 14.01 9 11.01"/>
                 </svg>
                 <p>{t.contact.successMessage}</p>
+                <button
+                  type="button"
+                  className="contact__reset"
+                  onClick={() => setSubmitted(false)}
+                >
+                  Send another message
+                </button>
               </div>
             ) : (
               <form className="contact__form" onSubmit={handleSubmit} noValidate>
+                {error && (
+                  <div className="contact__error">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <span>{error}</span>
+                  </div>
+                )}
                 <div className="contact__form-row">
                   <div className="contact__field">
                     <input
@@ -125,7 +208,7 @@ export function Contact() {
                       name="name"
                       id="contact-name"
                       className="contact__input"
-                      placeholder={t.contact.namePlaceholder}
+                      placeholder={`${t.contact.namePlaceholder} *`}
                       value={form.name}
                       onChange={handleChange}
                       required
@@ -138,7 +221,7 @@ export function Contact() {
                       name="email"
                       id="contact-email"
                       className="contact__input"
-                      placeholder={t.contact.emailPlaceholder}
+                      placeholder={`${t.contact.emailPlaceholder} *`}
                       value={form.email}
                       onChange={handleChange}
                       required
@@ -163,13 +246,14 @@ export function Contact() {
                     name="message"
                     id="contact-message"
                     className="contact__input contact__textarea"
-                    placeholder={t.contact.messagePlaceholder}
+                    placeholder={`${t.contact.messagePlaceholder} *`}
                     value={form.message}
                     onChange={handleChange}
                     required
                     rows={5}
                   />
                 </div>
+                <p className="contact__required-note">* Required fields</p>
                 <button
                   type="submit"
                   className={`contact__submit${submitting ? ' contact__submit--loading' : ''}`}
