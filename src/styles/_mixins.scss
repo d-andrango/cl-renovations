@@ -1,0 +1,79 @@
+@use 'variables' as *;
+
+// ─── Typography ────────────────────────────────────────────────
+
+// Display heading (Playfair)
+%heading-display {
+  font-family: $font-display;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+// Section label (small caps / overline)
+%label-overline {
+  font-family: $font-body;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+// Body text
+%body-text {
+  font-family: $font-body;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+// ─── Layout ────────────────────────────────────────────────────
+%container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $space-xl;
+
+  @media (max-width: $bp-md) {
+    padding: 0 $space-lg;
+  }
+}
+
+%section-padding {
+  padding: $space-5xl 0;
+
+  @media (max-width: $bp-md) {
+    padding: $space-4xl 0;
+  }
+}
+
+// ─── Animation ─────────────────────────────────────────────────
+%fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+%fade-in {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+
+  &.is-visible {
+    opacity: 1;
+  }
+}
+
+// ─── Gold divider ──────────────────────────────────────────────
+%gold-divider {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin: $space-md 0 $space-lg;
+}

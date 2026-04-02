@@ -1,0 +1,353 @@
+@use '../../styles/variables' as *;
+
+// ─── Hero ──────────────────────────────────────────────────────
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+
+  // ── Background
+  &__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.68);
+  }
+
+  &__bg-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201, 169, 110, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(201, 169, 110, 0.04) 0%, transparent 50%);
+  }
+
+  &__bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 80px 80px;
+
+    [data-theme='light'] & {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
+    }
+  }
+
+  // ── Main container
+  &__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px $space-xl $space-4xl;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: $space-5xl;
+    flex: 1;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: 1fr;
+      padding: 120px $space-lg $space-3xl;
+      gap: $space-3xl;
+    }
+
+    @media (max-width: $bp-md) {
+      padding: 110px $space-lg $space-2xl;
+    }
+  }
+
+  // ── Content
+  &__content {
+    max-width: 640px;
+  }
+
+  &__tagline {
+    font-family: $font-body;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $color-gold;
+    margin-bottom: $space-lg;
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: $color-gold;
+      flex-shrink: 0;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: $color-bone-50;
+    margin-bottom: $space-xl;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title-line {
+    display: block;
+
+    &:nth-child(odd) {
+      color: $color-bone-50;
+    }
+
+    &:nth-child(even) {
+      color: $color-gold;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: $color-charcoal-200;
+    margin-bottom: $space-2xl;
+    max-width: 480px;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-md $space-2xl;
+    background: $color-gold;
+    color: $color-charcoal-900;
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: background $transition-normal, transform $transition-fast, box-shadow $transition-normal;
+
+    &:hover {
+      background: $color-gold-light;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201, 169, 110, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    svg {
+      transition: transform $transition-fast;
+    }
+
+    &:hover svg {
+      transform: translateX(4px);
+    }
+  }
+
+  // ── Emblem
+  &__emblem {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    @media (max-width: $bp-lg) {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: $bp-md) {
+      display: none;
+    }
+  }
+
+  &__emblem-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-xs;
+    text-align: center;
+  }
+
+  &__emblem-cl {
+    font-family: $font-display;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    color: $color-gold;
+    letter-spacing: -0.05em;
+
+    @media (max-width: $bp-lg) {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__emblem-label {
+    font-family: $font-body;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $color-charcoal-200;
+  }
+
+  &__emblem-divider {
+    width: 40px;
+    height: 1px;
+    background: $color-gold;
+    opacity: 0.5;
+    margin: $space-xs 0;
+  }
+
+  &__emblem-since {
+    font-family: $font-body;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $color-charcoal-400;
+  }
+
+  &__emblem-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+
+    &--1 {
+      inset: 0;
+      animation: ring-rotate 20s linear infinite;
+    }
+
+    &--2 {
+      inset: 16px;
+      animation: ring-rotate 30s linear infinite reverse;
+      border-style: dashed;
+    }
+  }
+
+  // ── Stats bar
+  &__stats {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $space-2xl $space-xl;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: $bp-md) {
+      padding: $space-xl $space-lg;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-xs;
+    text-align: center;
+    padding: 0 $space-xl;
+
+    &:not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: $bp-sm) {
+      padding: 0 $space-md;
+    }
+  }
+
+  &__stat-value {
+    font-family: $font-display;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: $color-gold;
+    line-height: 1;
+  }
+
+  &__stat-label {
+    font-family: $font-body;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-charcoal-400;
+  }
+
+  // ── Scroll hint
+  &__scroll-hint {
+    position: absolute;
+    bottom: $space-xl;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (max-width: $bp-md) {
+      display: none;
+    }
+  }
+
+  &__scroll-hint-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, $color-gold, transparent);
+    animation: scroll-hint 2s ease-in-out infinite;
+  }
+}
+
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes scroll-hint {
+  0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  50%  { opacity: 1; transform: scaleY(1); transform-origin: top; }
+  100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+}

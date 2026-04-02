@@ -1,0 +1,205 @@
+@use '../../styles/variables' as *;
+
+// ─── Service Area ──────────────────────────────────────────────
+.service-area {
+  background: var(--bg-secondary);
+  padding: $space-5xl 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-xl;
+
+    @media (max-width: $bp-md) {
+      padding: 0 $space-lg;
+    }
+  }
+
+  // ── Header
+  &__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto $space-4xl;
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  &__label-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+    margin: $space-md auto $space-lg;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: $space-md;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title-line {
+    display: block;
+
+    &:nth-child(2) {
+      color: var(--gold);
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  // ── Content
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-2xl;
+    align-items: center;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // ── Map placeholder
+  &__map-placeholder {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: $radius-xl;
+    min-height: 380px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 55% 45%, rgba(201, 169, 110, 0.08) 0%, transparent 60%);
+    }
+  }
+
+  &__map-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-md;
+    text-align: center;
+  }
+
+  &__map-icon {
+    color: var(--gold);
+    animation: map-pulse 3s ease-in-out infinite;
+  }
+
+  &__map-label {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  &__map-sublabel {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  // ── Areas
+  &__areas {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+  }
+
+  &__areas-heading {
+    font-family: $font-body;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: $space-sm;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-sm $space-xl;
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__list-item {
+    font-family: $font-body;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: var(--gold);
+    }
+  }
+
+  &__list-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  &__note {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-sm;
+    padding: $space-md $space-lg;
+    background: rgba(201, 169, 110, 0.06);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    border-radius: $radius-md;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-family: $font-body;
+    line-height: 1.6;
+
+    svg {
+      flex-shrink: 0;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+  }
+}
+
+@keyframes map-pulse {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}

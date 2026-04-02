@@ -1,0 +1,294 @@
+@use '../../../styles/variables' as *;
+
+// ─── Navbar ────────────────────────────────────────────────────
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  transition: background $transition-normal, box-shadow $transition-normal, padding $transition-normal;
+  padding: $space-lg 0;
+
+  &--scrolled {
+    background: var(--navbar-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--border-color);
+    padding: $space-md 0;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-xl;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-xl;
+
+    @media (max-width: $bp-md) {
+      padding: 0 $space-lg;
+    }
+  }
+
+  // ── Logo
+  &__logo {
+    display: flex;
+    align-items: baseline;
+    gap: $space-xs;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  &__logo-cl {
+    font-family: $font-display;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: $color-gold;
+
+    .navbar--scrolled & {
+      color: var(--gold);
+    }
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  &__logo-text {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-bone-50;
+
+    .navbar--scrolled & {
+      color: var(--text-primary);
+    }
+  }
+
+  // ── Nav
+  &__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: $bp-lg) {
+      position: fixed;
+      inset: 0;
+      top: 72px;
+      background: $color-charcoal-900;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: $space-2xl $space-xl;
+      transform: translateX(100%);
+      transition: transform $transition-normal;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+      .navbar--scrolled & {
+        background: var(--bg-primary);
+        border-top: 1px solid var(--border-color);
+      }
+      pointer-events: none;
+
+      &--open {
+        transform: translateX(0);
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: $space-xl;
+
+    @media (max-width: $bp-lg) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-xl;
+    }
+  }
+
+  &__link {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-charcoal-200;
+
+    .navbar--scrolled & {
+      color: var(--text-secondary);
+    }
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $space-xs 0;
+    position: relative;
+    transition: color $transition-fast;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $color-gold;
+
+      .navbar--scrolled & {
+        background: var(--gold);
+      }
+      transition: width $transition-normal;
+    }
+
+    &:hover {
+      color: $color-gold;
+
+      .navbar--scrolled & {
+        color: var(--gold);
+      }
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: $bp-lg) {
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  // ── Actions
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+  }
+
+  &__lang {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    .navbar--scrolled & {
+      border: 1px solid var(--border-color);
+    }
+    border-radius: $radius-md;
+    overflow: hidden;
+  }
+
+  &__lang-btn {
+    font-family: $font-body;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 5px 10px;
+    color: $color-charcoal-400;
+
+    .navbar--scrolled & {
+      color: var(--text-muted);
+    }
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background $transition-fast, color $transition-fast;
+
+    &--active {
+      background: $color-gold;
+      color: $color-charcoal-900;
+
+      .navbar--scrolled & {
+        background: var(--gold);
+      }
+    }
+
+    &:not(.navbar__lang-btn--active):hover {
+      color: $color-bone-50;
+
+      .navbar--scrolled & {
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  &__theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: $color-charcoal-200;
+
+    .navbar--scrolled & {
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    background: transparent;
+    transition: border-color $transition-fast, color $transition-fast;
+
+    &:hover {
+      border-color: $color-gold;
+      color: $color-gold;
+
+      .navbar--scrolled & {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+    }
+  }
+
+  // ── Hamburger
+  &__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-md;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    .navbar--scrolled & {
+      border: 1px solid var(--border-color);
+    }
+    background: transparent;
+    cursor: pointer;
+    transition: border-color $transition-fast;
+
+    @media (max-width: $bp-lg) {
+      display: flex;
+    }
+
+    span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: $color-bone-50;
+
+      .navbar--scrolled & {
+        background: var(--text-primary);
+      }
+      border-radius: 1px;
+      transition: transform $transition-normal, opacity $transition-fast;
+    }
+
+    &--open span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    &--open span:nth-child(2) {
+      opacity: 0;
+    }
+    &--open span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+  }
+}

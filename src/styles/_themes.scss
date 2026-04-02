@@ -1,0 +1,29 @@
+@use 'variables' as *;
+
+// ─── CSS Custom Properties (Theme Tokens) ──────────────────────
+:root,
+[data-theme='dark'] {
+  --bg-primary:    #{$color-charcoal-900};
+  --bg-secondary:  #{$color-charcoal-800};
+  --bg-card:       #{$color-charcoal-700};
+  --text-primary:  #{$color-bone-50};
+  --text-secondary:#{$color-bone-100};
+  --text-muted:    #{$color-charcoal-200};
+  --border-color:  #{$color-charcoal-600};
+  --gold:          #{$color-gold};
+  --gold-light:    #{$color-gold-light};
+  --navbar-bg:     rgba(15, 15, 15, 0.92);
+}
+
+[data-theme='light'] {
+  --bg-primary:    #{$color-bone-50};
+  --bg-secondary:  #{$color-bone-100};
+  --bg-card:       #{$color-bone-200};
+  --text-primary:  #{$color-charcoal-900};
+  --text-secondary:#{$color-charcoal-800};
+  --text-muted:    #{$color-charcoal-400};
+  --border-color:  #{$color-bone-400};
+  --gold:          #{$color-gold};
+  --gold-light:    #a07840;
+  --navbar-bg:     rgba(250, 249, 247, 0.92);
+}

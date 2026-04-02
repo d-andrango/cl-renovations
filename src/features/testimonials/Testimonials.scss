@@ -1,0 +1,316 @@
+@use '../../styles/variables' as *;
+
+// ─── Testimonials ──────────────────────────────────────────────
+.testimonials {
+  background: var(--bg-primary);
+  padding: $space-5xl 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-xl;
+
+    @media (max-width: $bp-md) {
+      padding: 0 $space-lg;
+    }
+  }
+
+  // ── Header
+  &__header {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto $space-4xl;
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  &__label-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+    margin: $space-md auto $space-lg;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: $space-md;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title-line:nth-child(2) {
+    color: var(--gold);
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  // ── Body: featured + list
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: $space-2xl;
+    align-items: start;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // ── Featured card
+  &__featured {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: $radius-xl;
+    padding: $space-3xl;
+    position: relative;
+    overflow: hidden;
+    transition: border-color $transition-normal;
+
+    &:hover {
+      border-color: rgba(201, 169, 110, 0.25);
+    }
+
+    @media (max-width: $bp-md) {
+      padding: $space-2xl;
+    }
+  }
+
+  &__featured-quote {
+    font-family: $font-display;
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 0.7;
+    color: rgba(201, 169, 110, 0.12);
+    position: absolute;
+    top: $space-xl;
+    left: $space-2xl;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &__featured-text {
+    font-family: $font-display;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin: $space-lg 0 $space-2xl;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: $bp-md) {
+      font-size: 1rem;
+    }
+  }
+
+  &__featured-meta {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    margin-bottom: $space-2xl;
+  }
+
+  &__featured-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), rgba(201, 169, 110, 0.5));
+    color: $color-charcoal-900;
+    font-family: $font-display;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  &__featured-name {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  &__featured-detail {
+    font-family: $font-body;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  // ── Controls
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: $space-lg;
+    padding-top: $space-xl;
+    border-top: 1px solid var(--border-color);
+  }
+
+  &__arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    background: transparent;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: border-color $transition-fast, color $transition-fast, background $transition-fast;
+    flex-shrink: 0;
+
+    &:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    flex: 1;
+    justify-content: center;
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border-color);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background $transition-fast, transform $transition-fast, width $transition-normal;
+
+    &--active {
+      background: var(--gold);
+      width: 20px;
+      border-radius: 3px;
+    }
+  }
+
+  // ── Star rating
+  &__stars {
+    display: flex;
+    gap: 2px;
+    color: var(--gold);
+    margin-bottom: $space-md;
+  }
+
+  // ── Side list
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+
+    @media (max-width: $bp-lg) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    padding: $space-md $space-lg;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: $radius-lg;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition:
+      border-color $transition-fast,
+      background $transition-fast,
+      transform $transition-fast;
+
+    .testimonials__stars {
+      margin-bottom: 0;
+      margin-left: auto;
+      flex-shrink: 0;
+      opacity: 0.6;
+      transition: opacity $transition-fast;
+    }
+
+    &:hover,
+    &--active {
+      border-color: rgba(201, 169, 110, 0.35);
+
+      .testimonials__stars {
+        opacity: 1;
+      }
+    }
+
+    &--active {
+      background: rgba(201, 169, 110, 0.06);
+    }
+  }
+
+  &__list-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(201, 169, 110, 0.4), rgba(201, 169, 110, 0.15));
+    color: var(--gold);
+    font-family: $font-display;
+    font-size: 1rem;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  &__list-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__list-name {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__list-service {
+    font-family: $font-body;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

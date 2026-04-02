@@ -1,0 +1,287 @@
+@use '../../styles/variables' as *;
+
+// ─── Services ──────────────────────────────────────────────────
+.services {
+  background: var(--bg-secondary);
+  padding: $space-5xl 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-xl;
+
+    @media (max-width: $bp-md) {
+      padding: 0 $space-lg;
+    }
+  }
+
+  // ── Header
+  &__header {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto $space-4xl;
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  &__label-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+    margin: $space-md auto $space-lg;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: $space-md;
+    line-height: 1.15;
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  // ── Grid
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-lg;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // ── Card
+  &__card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: $radius-xl;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition:
+      border-color $transition-normal,
+      transform $transition-normal,
+      box-shadow $transition-normal;
+
+    // Ambient glow on hover
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        ellipse 80% 60% at 50% 120%,
+        rgba(201, 169, 110, 0.1) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity $transition-slow;
+      pointer-events: none;
+    }
+
+    &:hover {
+      border-color: rgba(201, 169, 110, 0.35);
+      transform: translateY(-6px);
+      box-shadow:
+        0 2px 0 0 var(--gold),
+        0 24px 64px rgba(0, 0, 0, 0.18);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  // ── Card image
+  &__card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: $radius-xl $radius-xl 0 0;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+  }
+
+  &__card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 30%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    transition: opacity $transition-normal;
+  }
+
+  &__card:hover &__card-image img {
+    transform: scale(1.06);
+  }
+
+  // Re-apply padding to inner content blocks
+  &__card-top,
+  &__card-body,
+  &__card-cta {
+    padding-left: $space-2xl;
+    padding-right: $space-2xl;
+  }
+
+  &__card-top {
+    padding-top: $space-xl;
+  }
+
+  &__card-cta {
+    padding-bottom: $space-xl;
+  }
+
+  // ── Card top row: icon + ghost number
+  &__card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: $space-lg;
+  }
+
+  &__card-icon-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: $radius-lg;
+    background: rgba(201, 169, 110, 0.08);
+    border: 1px solid rgba(201, 169, 110, 0.18);
+    display: grid;
+    place-items: center;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition:
+      background $transition-normal,
+      border-color $transition-normal,
+      transform $transition-normal;
+
+    svg {
+      transition: transform $transition-normal;
+    }
+  }
+
+  &__card:hover &__card-icon-wrap {
+    background: rgba(201, 169, 110, 0.14);
+    border-color: rgba(201, 169, 110, 0.35);
+    transform: scale(1.06);
+
+    svg {
+      transform: scale(1.1);
+    }
+  }
+
+  &__card-number {
+    font-family: $font-display;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--border-color);
+    user-select: none;
+    transition: color $transition-normal, transform $transition-normal;
+    letter-spacing: -0.04em;
+  }
+
+  &__card:hover &__card-number {
+    color: rgba(201, 169, 110, 0.2);
+    transform: scale(1.05) translateY(-2px);
+  }
+
+  // ── Card body
+  &__card-body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+    flex: 1;
+    margin-bottom: $space-lg;
+  }
+
+  &__card-title {
+    font-family: $font-display;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    transition: color $transition-fast;
+  }
+
+  &__card:hover &__card-title {
+    color: var(--gold-light, var(--gold));
+  }
+
+  &__card-description {
+    font-family: $font-body;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+
+  // ── Card CTA
+  &__card-cta {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    padding-top: $space-lg;
+    border-top: 1px solid var(--border-color);
+    transition: border-color $transition-normal;
+  }
+
+  &__card:hover &__card-cta {
+    border-color: rgba(201, 169, 110, 0.25);
+  }
+
+  &__card-cta-text {
+    font-family: $font-body;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: letter-spacing $transition-normal;
+  }
+
+  &__card-cta svg {
+    color: var(--gold);
+    transition: transform $transition-normal;
+  }
+
+  &__card:hover &__card-cta-text {
+    letter-spacing: 0.18em;
+  }
+
+  &__card:hover &__card-cta svg {
+    transform: translateX(5px);
+  }
+}
