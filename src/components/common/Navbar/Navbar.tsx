@@ -26,7 +26,6 @@ export function Navbar() {
     { id: 'process', label: t.nav.process },
     { id: 'portfolio', label: t.nav.portfolio },
     { id: 'experience', label: t.nav.experience },
-    { id: 'testimonials', label: t.nav.testimonials },
     { id: 'service-area', label: t.nav.serviceArea },
     { id: 'contact', label: t.nav.contact },
   ]
