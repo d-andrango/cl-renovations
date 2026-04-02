@@ -30,6 +30,28 @@ export function Navbar() {
     { id: 'contact', label: t.nav.contact },
   ]
 
+  const languageFlags = {
+    en: (
+      <svg width="20" height="15" viewBox="0 0 60 30" aria-hidden="true">
+        <clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+        <clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+        <g clipPath="url(#s)">
+          <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/>
+          <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
+          <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/>
+        </g>
+      </svg>
+    ),
+    es: (
+      <svg width="20" height="15" viewBox="0 0 750 500" aria-hidden="true">
+        <rect width="750" height="500" fill="#c60b1e"/>
+        <rect width="750" height="250" y="125" fill="#ffc400"/>
+      </svg>
+    )
+  }
+
   return (
     <>
       <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
@@ -68,8 +90,9 @@ export function Navbar() {
                   className={`navbar__lang-btn${language === lang ? ' navbar__lang-btn--active' : ''}`}
                   onClick={() => setLanguage(lang)}
                   aria-label={`Switch to ${lang === 'en' ? 'English' : 'Spanish'}`}
+                  title={lang === 'en' ? 'English' : 'Español'}
                 >
-                  {lang.toUpperCase()}
+                  {languageFlags[lang]}
                 </button>
               ))}
             </div>
@@ -120,6 +143,7 @@ export function Navbar() {
         onLanguageChange={setLanguage}
         theme={theme}
         onThemeToggle={toggleTheme}
+        languageFlags={languageFlags}
         onNavClick={handleNavClick}
       />
     </>

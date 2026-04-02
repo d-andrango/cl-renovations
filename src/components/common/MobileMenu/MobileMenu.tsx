@@ -11,6 +11,7 @@ interface MobileMenuProps {
   theme: 'light' | 'dark'
   onThemeToggle: () => void
   onNavClick: (id: string) => void
+  languageFlags: Record<Language, JSX.Element>
 }
 
 export function MobileMenu({
@@ -22,6 +23,7 @@ export function MobileMenu({
   theme,
   onThemeToggle,
   onNavClick,
+  languageFlags,
 }: MobileMenuProps) {
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -116,8 +118,9 @@ export function MobileMenu({
                   }`}
                   onClick={() => onLanguageChange(lang)}
                   aria-label={`Switch to ${lang === 'en' ? 'English' : 'Spanish'}`}
+                  title={lang === 'en' ? 'English' : 'Español'}
                 >
-                  {lang === 'en' ? 'English' : 'Español'}
+                  {languageFlags[lang]}
                 </button>
               ))}
             </div>
