@@ -47,15 +47,7 @@ export const en: Translations = {
     sectionLabel: 'Our Story',
     title: '60 Years of\nCombined Mastery',
     subtitle:
-      'A family legacy built on trust, precision and an uncompromising dedication to quality.',
-    fatherName: 'The Father',
-    fatherYears: '40+ years of experience',
-    fatherDescription:
-      'With over four decades in the trade, he has shaped London homes with the kind of craftsmanship that only comes from a lifetime of dedication. Every beam, every fitting, every finish — done right.',
-    sonName: 'The Son',
-    sonYears: '20+ years of experience',
-    sonDescription:
-      'Trained from the ground up alongside his father, he brings modern techniques and fresh perspectives to every project while preserving the standards that define CL Renovations.',
+      'A family legacy built on trust, precision and an uncompromising dedication to quality. With over three decades in the trade, he has shaped London homes with the kind of craftsmanship that only comes from a lifetime of dedication. Every beam, every fitting, every finish — done right.',
     combinedLabel: 'Years Combined Experience',
     combinedYears: '60+',
   },
@@ -219,17 +211,9 @@ export const es: Translations = {
   },
   experience: {
     sectionLabel: 'Nuestra Historia',
-    title: '60 Años de\nMaestría Combinada',
+    title: '30 Años de\nMaestría Combinada',
     subtitle:
-      'Un legado familiar construido sobre confianza, precisión y una dedicación inquebrantable a la calidad.',
-    fatherName: 'El Padre',
-    fatherYears: '+40 años de experiencia',
-    fatherDescription:
-      'Con más de cuatro décadas en el oficio, ha dado forma a hogares londinenses con el tipo de artesanía que sólo nace de una vida de dedicación. Cada viga, cada instalación, cada acabado — hecho bien.',
-    sonName: 'El Hijo',
-    sonYears: '+20 años de experiencia',
-    sonDescription:
-      'Formado desde cero junto a su padre, aporta técnicas modernas y perspectivas frescas a cada proyecto manteniendo los estándares que definen CL Renovations.',
+      'Un legado familiar construido sobre confianza, precisión y una dedicación inquebrantable a la calidad. Con más de tres décadas en el oficio, ha dado forma a hogares londinenses con el tipo de artesanía que sólo nace de una vida de dedicación. Cada viga, cada instalación, cada acabado — hecho bien.',
     combinedLabel: 'Años de Experiencia Combinada',
     combinedYears: '60+',
   },

@@ -35,12 +35,6 @@ export interface Translations {
     sectionLabel: string
     title: string
     subtitle: string
-    fatherName: string
-    fatherYears: string
-    fatherDescription: string
-    sonName: string
-    sonYears: string
-    sonDescription: string
     combinedLabel: string
     combinedYears: string
   }
