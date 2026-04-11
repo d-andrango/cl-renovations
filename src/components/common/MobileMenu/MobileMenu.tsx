@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import type { ReactElement } from 'react'
 import { createPortal } from 'react-dom'
 import type { Language } from '../../../core/types'
 
@@ -11,7 +12,7 @@ interface MobileMenuProps {
   theme: 'light' | 'dark'
   onThemeToggle: () => void
   onNavClick: (id: string) => void
-  languageFlags: Record<Language, JSX.Element>
+  languageFlags: Record<Language, ReactElement>
 }
 
 export function MobileMenu({
