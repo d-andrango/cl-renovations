@@ -78,8 +78,8 @@ export const en: Translations = {
     messagePlaceholder: 'Describe your project...',
     submitButton: 'Send Message',
     successMessage: "Thank you! We'll be in touch within 24 hours.",
-    phone: '+44 7XXX XXX XXX',
-    email: 'info@clrenovations.co.uk',
+    phone: '+44 7365 355532',
+    email: 'clrenovations26@gmail.com',
     address: 'Leytonstone, London E11',
   },
   footer: {
@@ -245,8 +245,8 @@ export const es: Translations = {
     messagePlaceholder: 'Describe tu proyecto...',
     submitButton: 'Enviar Mensaje',
     successMessage: '¡Gracias! Nos pondremos en contacto en menos de 24 horas.',
-    phone: '+44 7XXX XXX XXX',
-    email: 'info@clrenovations.co.uk',
+    phone: '+44 7365 355532',
+    email: 'clrenovations26@gmail.com',
     address: 'Leytonstone, Londres',
   },
   footer: {
