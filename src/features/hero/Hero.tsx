@@ -49,17 +49,18 @@ export function Hero() {
               <polyline points="12 5 19 12 12 19"/>
             </svg>
           </button>
-        </div>
 
-        <div className="hero__emblem animate-fade-in is-visible" aria-hidden="true">
-          <div className="hero__emblem-inner">
-            <span className="hero__emblem-cl">CL</span>
-            <span className="hero__emblem-label">Renovations</span>
-            <div className="hero__emblem-divider" />
-            <span className="hero__emblem-since">Est. London</span>
+          <div className="hero__emblem animate-fade-in is-visible" aria-hidden="true">
+            <div className="hero__emblem-inner">
+              <img 
+                src="/cl-renovations-logo.png" 
+                alt="CL Renovations" 
+                className="hero__emblem-logo"
+              />
+            </div>
+            <div className="hero__emblem-ring hero__emblem-ring--1" />
+            <div className="hero__emblem-ring hero__emblem-ring--2" />
           </div>
-          <div className="hero__emblem-ring hero__emblem-ring--1" />
-          <div className="hero__emblem-ring hero__emblem-ring--2" />
         </div>
       </div>
 

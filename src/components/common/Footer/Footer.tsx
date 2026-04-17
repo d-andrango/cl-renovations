@@ -7,8 +7,11 @@ export function Footer() {
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__brand">
-          <span className="footer__logo-cl">CL</span>
-          <span className="footer__logo-text">Renovations</span>
+          <img 
+            src="/cl-renovations-logo.png" 
+            alt="CL Renovations" 
+            className="footer__logo"
+          />
         </div>
         <p className="footer__tagline">{t.footer.tagline}</p>
         <div className="footer__divider" aria-hidden="true" />

@@ -81,6 +81,13 @@
   // ── Content
   &__content {
     max-width: 640px;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $bp-md) {
+      align-items: center;
+      text-align: center;
+    }
   }
 
   &__tagline {
@@ -102,6 +109,10 @@
       height: 1px;
       background: $color-gold;
       flex-shrink: 0;
+    }
+
+    @media (max-width: $bp-md) {
+      justify-content: center;
     }
   }
 
@@ -184,14 +195,12 @@
     place-items: center;
     flex-shrink: 0;
 
-    @media (max-width: $bp-lg) {
-      width: 160px;
-      height: 160px;
-      margin: 0 auto;
-    }
 
     @media (max-width: $bp-md) {
-      display: none;
+
+      margin-top: $space-2xl;
+      position: relative;
+      order: 10;
     }
   }
 
@@ -199,49 +208,20 @@
     position: relative;
     z-index: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: $space-xs;
-    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 
-  &__emblem-cl {
-    font-family: $font-display;
-    font-size: 5rem;
-    font-weight: 900;
-    line-height: 1;
-    color: $color-gold;
-    letter-spacing: -0.05em;
+  &__emblem-logo {
+    width: 180px;
+    height: auto;
+    filter: drop-shadow(0 4px 20px rgba(201, 169, 110, 0.3));
 
-    @media (max-width: $bp-lg) {
-      font-size: 3.5rem;
+    @media (max-width: $bp-md) {
+      width: 250px;
     }
-  }
-
-  &__emblem-label {
-    font-family: $font-body;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: $color-charcoal-200;
-  }
-
-  &__emblem-divider {
-    width: 40px;
-    height: 1px;
-    background: $color-gold;
-    opacity: 0.5;
-    margin: $space-xs 0;
-  }
-
-  &__emblem-since {
-    font-family: $font-body;
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: $color-charcoal-400;
   }
 
   &__emblem-ring {

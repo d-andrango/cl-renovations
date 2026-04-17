@@ -23,26 +23,17 @@
 
   &__brand {
     display: flex;
-    align-items: baseline;
-    gap: $space-xs;
+    align-items: center;
+    justify-content: center;
   }
 
-  &__logo-cl {
-    font-family: $font-display;
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: var(--gold);
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-
-  &__logo-text {
-    font-family: $font-body;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-primary);
+  &__logo {
+    height: 70px;
+    width: auto;
+    
+    @media (max-width: $bp-sm) {
+      height: 150px;
+    }
   }
 
   &__tagline {

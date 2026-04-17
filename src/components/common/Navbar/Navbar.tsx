@@ -61,8 +61,11 @@ export function Navbar() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label="CL Renovations — Back to top"
           >
-            <span className="navbar__logo-cl">CL</span>
-            <span className="navbar__logo-text">Renovations</span>
+            <img 
+              src="/cl-renovations-logo.png" 
+              alt="CL Renovations" 
+              className="navbar__logo-img"
+            />
           </button>
 
           {/* Desktop navigation - hidden on mobile */}

@@ -67,8 +67,13 @@ export function MobileMenu({
 
       {/* Menu drawer */}
       <div className="mobile-menu__drawer">
-        {/* Header with close button */}
+        {/* Header with logo and close button */}
         <div className="mobile-menu__header">
+          <img 
+            src="/cl-renovations-logo.png" 
+            alt="CL Renovations" 
+            className="mobile-menu__logo"
+          />
           <button
             className="mobile-menu__close"
             onClick={onClose}

@@ -54,8 +54,14 @@
   &__header {
     padding: $space-xl;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     flex-shrink: 0;
+  }
+
+  &__logo {
+    height: 45px;
+    width: auto;
   }
 
   &__close {

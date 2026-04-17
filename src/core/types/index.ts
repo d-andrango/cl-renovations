@@ -54,7 +54,7 @@ export interface Translations {
     messagePlaceholder: string
     submitButton: string
     successMessage: string
-    phone: string
+    phones: string[]
     email: string
     address: string
   }

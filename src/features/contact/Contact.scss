@@ -110,6 +110,70 @@
       border-color: rgba(201, 169, 110, 0.35);
       transform: translateY(-2px);
     }
+
+    &--static {
+      cursor: default;
+      
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+
+  &__info-phones {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+    flex: 1;
+  }
+
+  &__info-phone-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-xl;
+  }
+
+  &__info-phone-link {
+    display: block;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color $transition-fast;
+    flex: 1;
+
+    &:hover {
+      color: var(--gold);
+    }
+  }
+
+  &__whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #25D366;
+    color: white;
+    border-radius: $radius-md;
+    text-decoration: none;
+    transition: background $transition-fast, transform $transition-fast;
+    flex-shrink: 0;
+
+    &:hover {
+      background: #20BA5A;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    svg {
+      display: block;
+    }
   }
 
   &__info-icon {
