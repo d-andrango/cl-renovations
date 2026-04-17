@@ -16,12 +16,12 @@ export const en: Translations = {
     subtitle:
       'Renovations across London. Two generations of expertise at your service.',
     cta: 'Request a Quote',
-    yearsLabel: 'Years Combined',
-    yearsValue: '60+',
+    yearsLabel: 'Years Experience',
+    yearsValue: '20+',
     clientsLabel: 'Happy Clients',
-    clientsValue: '500+',
+    clientsValue: '100+',
     projectsLabel: 'Projects Done',
-    projectsValue: '800+',
+    projectsValue: '200+',
   },
   services: {
     sectionLabel: 'What We Do',
@@ -47,9 +47,9 @@ export const en: Translations = {
     sectionLabel: 'Our Story',
     title: '+20 Years of\nCombined Mastery',
     subtitle:
-      'A family legacy built on trust, precision and an uncompromising dedication to quality. With over three decades in the trade, he has shaped London homes with the kind of craftsmanship that only comes from a lifetime of dedication. Every beam, every fitting, every finish — done right.',
+      'A family legacy built on trust, precision and an uncompromising dedication to quality. With over two decades in the trade, he has shaped London homes with the kind of craftsmanship that only comes from a lifetime of dedication. Every beam, every fitting, every finish — done right.',
     combinedLabel: 'Years Combined Experience',
-    combinedYears: '60+',
+    combinedYears: '20+',
   },
   serviceArea: {
     sectionLabel: 'Where We Work',
@@ -182,12 +182,12 @@ export const es: Translations = {
     subtitle:
       'Reformas en Londres. Dos generaciones de experiencia a tu servicio.',
     cta: 'Solicitar Presupuesto',
-    yearsLabel: 'Años Combinados',
-    yearsValue: '60+',
+    yearsLabel: 'Años de Experiencia',
+    yearsValue: '20+',
     clientsLabel: 'Clientes Satisfechos',
-    clientsValue: '500+',
+    clientsValue: '100+',
     projectsLabel: 'Proyectos Completados',
-    projectsValue: '800+',
+    projectsValue: '200+',
   },
   services: {
     sectionLabel: 'Qué Hacemos',
